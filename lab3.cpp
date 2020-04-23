@@ -1,6 +1,6 @@
 //
 // Created by Nidzhat on 21.04.2020.
-//VER 1.1
+//VER 1.2
 #include <windows.h>
 #include "lab3.h"
 
