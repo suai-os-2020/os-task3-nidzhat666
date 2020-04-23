@@ -296,7 +296,7 @@ int lab3_init()
     if (thread_g1 == NULL)
         return GetLastError();
     thread_b1 = CreateThread(NULL, 0, thread_b, 0, 0, &IDThread);
-    if (thread_g1 == NULL)
+    if (thread_b1 == NULL)
         return GetLastError();
     thread_f1 = CreateThread(NULL, 0, thread_f, 0, 0, &IDThread);
     if (thread_f1 == NULL)
@@ -305,22 +305,22 @@ int lab3_init()
     if (thread_d1 == NULL)
         return GetLastError();
     thread_h1 = CreateThread(NULL, 0, thread_h, 0, 0, &IDThread);
-    if (thread_d1 == NULL)
+    if (thread_h1 == NULL)
         return GetLastError();
     thread_k1 = CreateThread(NULL, 0, thread_k, 0, 0, &IDThread);
-    if (thread_d1 == NULL)
+    if (thread_k1 == NULL)
         return GetLastError();
     thread_m1 = CreateThread(NULL, 0, thread_m, 0, 0, &IDThread);
-    if (thread_d1 == NULL)
+    if (thread_m1 == NULL)
         return GetLastError();
     thread_n1 = CreateThread(NULL, 0, thread_n, 0, 0, &IDThread);
-    if (thread_d1 == NULL)
+    if (thread_n1 == NULL)
         return GetLastError();
     thread_p1 = CreateThread(NULL, 0, thread_p, 0, 0, &IDThread);
-    if (thread_d1 == NULL)
+    if (thread_p1 == NULL)
         return GetLastError();
     thread_e1 = CreateThread(NULL, 0, thread_e, 0, 0, &IDThread);
-    if (thread_d1 == NULL)
+    if (thread_e1 == NULL)
         return GetLastError();
 
     //-------------------------
