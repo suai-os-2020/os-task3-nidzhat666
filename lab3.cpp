@@ -7,7 +7,7 @@
 #define MAX_SEM_COUNT 13
 
 HANDLE mutex;
-HANDLE thread_a1,thread_c1,thread_b1,thread_g1,thread_d1,thread_f1,thread_h1,thread_k1,thread_m1,thread_n1, thread_p1;
+HANDLE thread_a1,thread_c1,thread_b1,thread_g1,thread_d1,thread_f1,thread_h1,thread_k1,thread_m1,thread_n1, thread_p1,thread_e1;
 //HANDLE semA, semC, semB, semE, semG, semD, semF, semH, semK, semI, semM, semN;
 //HANDLE semC1;
 
@@ -24,7 +24,6 @@ HANDLE semF1 = CreateSemaphore(NULL,0, MAX_SEM_COUNT, NULL);
 HANDLE semH = CreateSemaphore(NULL,0, MAX_SEM_COUNT, NULL);
 HANDLE semK = CreateSemaphore(NULL,0, MAX_SEM_COUNT, NULL);
 HANDLE semK1 = CreateSemaphore(NULL,0, MAX_SEM_COUNT, NULL);
-HANDLE semI = CreateSemaphore(NULL,0, MAX_SEM_COUNT, NULL);
 HANDLE semM = CreateSemaphore(NULL,0, MAX_SEM_COUNT, NULL);
 HANDLE semM1 = CreateSemaphore(NULL,0, MAX_SEM_COUNT, NULL);
 HANDLE semN = CreateSemaphore(NULL,0, MAX_SEM_COUNT, NULL);
@@ -259,6 +258,17 @@ DWORD WINAPI thread_p(LPVOID iNum)
     };
     return 0;
 }
+DWORD WINAPI thread_e(LPVOID iNum)
+{
+    sem_wait(semE);
+    for (int i = 0; i < 3; ++i) {
+        mutex_lock(mutex);
+        std::cout << "e" << std::flush;
+        mutex_unlock(mutex);
+        computation();
+    };
+    return 0;
+}
 int lab3_init()
 {
     DWORD IDThread;
@@ -307,6 +317,9 @@ int lab3_init()
     if (thread_d1 == NULL)
         return GetLastError();
     thread_p1 = CreateThread(NULL, 0, thread_p, 0, 0, &IDThread);
+    if (thread_d1 == NULL)
+        return GetLastError();
+    thread_e1 = CreateThread(NULL, 0, thread_e, 0, 0, &IDThread);
     if (thread_d1 == NULL)
         return GetLastError();
 
@@ -368,17 +381,37 @@ int lab3_init()
     CloseHandle(semA);
     CloseHandle(semC);
     CloseHandle(semB);
+    CloseHandle(semB1);
     CloseHandle(semE);
     CloseHandle(semG);
     CloseHandle(semD);
+    CloseHandle(semD1);
     CloseHandle(semF);
+    CloseHandle(semF1);
     CloseHandle(semH);
     CloseHandle(semK);
-    CloseHandle(semK);
-    CloseHandle(semI);
+    CloseHandle(semK1);
     CloseHandle(semM);
+    CloseHandle(semM1);
     CloseHandle(semN);
+    CloseHandle(semP);
 
+    //close thread
+    CloseHandle(thread_a1);
+    CloseHandle(thread_c1);
+    CloseHandle(thread_b1);
+    CloseHandle(thread_e1);
+    CloseHandle(thread_g1);
+    CloseHandle(thread_d1);
+    CloseHandle(thread_f1);
+    CloseHandle(thread_h1);
+    CloseHandle(thread_h1);
+    CloseHandle(thread_k1);
+    CloseHandle(thread_m1);
+    CloseHandle(thread_n1);
+    CloseHandle(thread_p1);
 
+    //close mutex
+    CloseHandle(mutex);
     return 0;
 }
