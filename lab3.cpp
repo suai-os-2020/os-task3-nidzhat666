@@ -342,7 +342,7 @@ int lab3_init()
     sem_post(semE);
 
     sem_wait(semB1);
-    wait_thread(thread_c1);
+    wait_thread(thread_e1);
     wait_thread(thread_f1);
     wait_thread(thread_d1);
     //-------------------------
