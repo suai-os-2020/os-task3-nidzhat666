@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 11)
 
 add_subdirectory(test)
 
-#add_executable(lab2 main.cpp lab3.cpp lab3.h test/tests.cpp)
+#add_executable(lab3 main.cpp lab3.cpp lab3.h test/tests.cpp)
 add_executable(lab3 main.cpp lab3.cpp lab3.h)
 
 target_link_libraries(lab3)
