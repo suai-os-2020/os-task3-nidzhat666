@@ -405,7 +405,6 @@ int lab3_init()
     CloseHandle(thread_d1);
     CloseHandle(thread_f1);
     CloseHandle(thread_h1);
-    CloseHandle(thread_h1);
     CloseHandle(thread_k1);
     CloseHandle(thread_m1);
     CloseHandle(thread_n1);
