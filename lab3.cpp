@@ -414,5 +414,6 @@ int lab3_init()
 
     //close mutex
     CloseHandle(mutex);
+//	system("pause");
 	return 0;
 };
