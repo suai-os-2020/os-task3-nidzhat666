@@ -8,26 +8,10 @@
 
 HANDLE mutex;
 HANDLE thread_a1,thread_c1,thread_b1,thread_g1,thread_d1,thread_f1,thread_h1,thread_k1,thread_m1,thread_n1, thread_p1,thread_e1;
-//HANDLE semA, semC, semB, semE, semG, semD, semF, semH, semK, semI, semM, semN;
-//HANDLE semC1;
+HANDLE semC, semB, semE, semG, semD, semF, semH, semK, semP, semM, semN;
+HANDLE semB1, semD1, semF1, semK1, semM1;
 
-HANDLE semA = CreateSemaphore(NULL,0, MAX_SEM_COUNT, NULL);
-HANDLE semC = CreateSemaphore(NULL,0, MAX_SEM_COUNT, NULL);
-HANDLE semB = CreateSemaphore(NULL,0, MAX_SEM_COUNT, NULL);
-HANDLE semB1 = CreateSemaphore(NULL,0, MAX_SEM_COUNT, NULL);
-HANDLE semE = CreateSemaphore(NULL,0, MAX_SEM_COUNT, NULL);
-HANDLE semG = CreateSemaphore(NULL,0, MAX_SEM_COUNT, NULL);
-HANDLE semD = CreateSemaphore(NULL,0, MAX_SEM_COUNT, NULL);
-HANDLE semD1 = CreateSemaphore(NULL,0, MAX_SEM_COUNT, NULL);
-HANDLE semF = CreateSemaphore(NULL,0, MAX_SEM_COUNT, NULL);
-HANDLE semF1 = CreateSemaphore(NULL,0, MAX_SEM_COUNT, NULL);
-HANDLE semH = CreateSemaphore(NULL,0, MAX_SEM_COUNT, NULL);
-HANDLE semK = CreateSemaphore(NULL,0, MAX_SEM_COUNT, NULL);
-HANDLE semK1 = CreateSemaphore(NULL,0, MAX_SEM_COUNT, NULL);
-HANDLE semM = CreateSemaphore(NULL,0, MAX_SEM_COUNT, NULL);
-HANDLE semM1 = CreateSemaphore(NULL,0, MAX_SEM_COUNT, NULL);
-HANDLE semN = CreateSemaphore(NULL,0, MAX_SEM_COUNT, NULL);
-HANDLE semP = CreateSemaphore(NULL,0, MAX_SEM_COUNT, NULL);
+
 
 unsigned int lab3_thread_graph_id()
 {
@@ -274,19 +258,23 @@ DWORD WINAPI thread_e(LPVOID iNum)
 int lab3_init()
 {
     DWORD IDThread;
-//    HANDLE semA = CreateSemaphore(NULL,0, MAX_SEM_COUNT, NULL);
-//    HANDLE semC = CreateSemaphore(NULL,0, MAX_SEM_COUNT, NULL);
-//    HANDLE semC1 = CreateSemaphore(NULL,0, MAX_SEM_COUNT, NULL);
-//    HANDLE semB = CreateSemaphore(NULL,0, MAX_SEM_COUNT, NULL);
-//    HANDLE semE = CreateSemaphore(NULL,0, MAX_SEM_COUNT, NULL);
-//    HANDLE semG = CreateSemaphore(NULL,0, MAX_SEM_COUNT, NULL);
-//    HANDLE semD = CreateSemaphore(NULL,0, MAX_SEM_COUNT, NULL);
-//    HANDLE semF = CreateSemaphore(NULL,0, MAX_SEM_COUNT, NULL);
-//    HANDLE semH = CreateSemaphore(NULL,0, MAX_SEM_COUNT, NULL);
-//    HANDLE semK = CreateSemaphore(NULL,0, MAX_SEM_COUNT, NULL);
-//    HANDLE semI = CreateSemaphore(NULL,0, MAX_SEM_COUNT, NULL);
-//    HANDLE semM = CreateSemaphore(NULL,0, MAX_SEM_COUNT, NULL);
-//    HANDLE semN = CreateSemaphore(NULL,0, MAX_SEM_COUNT, NULL);
+
+    semC = CreateSemaphore(NULL,0, MAX_SEM_COUNT, NULL);
+    semB = CreateSemaphore(NULL,0, MAX_SEM_COUNT, NULL);
+    semB1 = CreateSemaphore(NULL,0, MAX_SEM_COUNT, NULL);
+    semE = CreateSemaphore(NULL,0, MAX_SEM_COUNT, NULL);
+    semG = CreateSemaphore(NULL,0, MAX_SEM_COUNT, NULL);
+    semD = CreateSemaphore(NULL,0, MAX_SEM_COUNT, NULL);
+    semD1 = CreateSemaphore(NULL,0, MAX_SEM_COUNT, NULL);
+    semF = CreateSemaphore(NULL,0, MAX_SEM_COUNT, NULL);
+    semF1 = CreateSemaphore(NULL,0, MAX_SEM_COUNT, NULL);
+    semH = CreateSemaphore(NULL,0, MAX_SEM_COUNT, NULL);
+    semK = CreateSemaphore(NULL,0, MAX_SEM_COUNT, NULL);
+    semK1 = CreateSemaphore(NULL,0, MAX_SEM_COUNT, NULL);
+    semM = CreateSemaphore(NULL,0, MAX_SEM_COUNT, NULL);
+    semM1 = CreateSemaphore(NULL,0, MAX_SEM_COUNT, NULL);
+    semN = CreateSemaphore(NULL,0, MAX_SEM_COUNT, NULL);
+    semP = CreateSemaphore(NULL,0, MAX_SEM_COUNT, NULL);
 
     thread_a1 = CreateThread(NULL, 0, thread_a, 0, 0, &IDThread);
     if (thread_a1 == NULL)
@@ -380,7 +368,6 @@ int lab3_init()
 
 
 //    Close sem
-    CloseHandle(semA);
     CloseHandle(semC);
     CloseHandle(semB);
     CloseHandle(semB1);
@@ -416,4 +403,4 @@ int lab3_init()
     CloseHandle(mutex);
 //	system("pause");
 	return 0;
-};
+}
