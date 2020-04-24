@@ -321,9 +321,9 @@ int lab3_init()
     sem_post(semC);
     sem_post(semD);
 
-    sem_wait(semB1);
-    sem_wait(semF1);
-    sem_wait(semD1);
+    WaitForSingleObject(semB1, INFINITE);
+    WaitForSingleObject(semF1, INFINITE);
+    WaitForSingleObject(semD1, INFINITE);
     WaitForSingleObject(thread_c1, INFINITE);
     //-------------------------
     sem_post(semB);
@@ -331,7 +331,7 @@ int lab3_init()
     sem_post(semD);
     sem_post(semE);
 
-    sem_wait(semB1);
+    WaitForSingleObject(semB1, INFINITE);
     WaitForSingleObject(thread_e1, INFINITE);
     WaitForSingleObject(thread_f1, INFINITE);
     WaitForSingleObject(thread_d1, INFINITE);
@@ -342,9 +342,9 @@ int lab3_init()
     sem_post(semM);
 
 
-    sem_wait(semB1);
-    sem_wait(semK1);
-    sem_wait(semM1);
+    WaitForSingleObject(semB1, INFINITE);
+    WaitForSingleObject(semK1, INFINITE);
+    WaitForSingleObject(semM1, INFINITE);
     WaitForSingleObject(thread_g1, INFINITE);
     //-------------------------
     sem_post(semB);
@@ -352,7 +352,7 @@ int lab3_init()
     sem_post(semM);
     sem_post(semH);
 
-    sem_wait(semB1);
+    WaitForSingleObject(semB1, INFINITE);
     WaitForSingleObject(thread_k1, INFINITE);
     WaitForSingleObject(thread_m1, INFINITE);
     WaitForSingleObject(thread_h1, INFINITE);
