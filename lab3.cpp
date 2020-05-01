@@ -13,7 +13,7 @@ HANDLE Thread_list[MAX_THREAD_COUNT];
 HANDLE semC, semB, semE, semG, semD, semF, semH, semK, semP, semM, semN;
 HANDLE semB1, semD1, semF1, semK1, semM1;
 
-
+using namespace std;
 
 unsigned int lab3_thread_graph_id()
 {
@@ -53,7 +53,7 @@ DWORD WINAPI thread_a(LPVOID iNum)
 {
     for (int i = 0; i < 3; ++i) {
         WaitForSingleObject(mutex, INFINITE);
-        std::cout << "a" << std::flush;
+        cout << "a" << flush;
         computation();
         ReleaseMutex(mutex);
     };
@@ -64,7 +64,7 @@ DWORD WINAPI thread_c(LPVOID iNum)
     sem_wait(semC);
     for (int i = 0; i < 3; ++i) {
         WaitForSingleObject(mutex, INFINITE);
-        std::cout << "c" << std::flush;
+        cout << "c" << flush;
         computation();
         ReleaseMutex(mutex);
     };
@@ -77,7 +77,7 @@ DWORD WINAPI thread_g(LPVOID iNum)
     for (int i = 0; i < 3; ++i) {
         sem_wait(semG);
         WaitForSingleObject(mutex, INFINITE);
-        std::cout << "g" << std::flush;
+        cout << "g" << flush;
         computation();
         ReleaseMutex(mutex);
         sem_post(semM);
@@ -89,7 +89,7 @@ DWORD WINAPI thread_b(LPVOID iNum)
     sem_wait(semB);
     for (int i = 0; i < 3; ++i) {
         WaitForSingleObject(mutex, INFINITE);
-        std::cout << "b" << std::flush;
+        cout << "b" << flush;
         computation();
         ReleaseMutex(mutex);
     };
@@ -97,7 +97,7 @@ DWORD WINAPI thread_b(LPVOID iNum)
     sem_wait(semB);
     for (int i = 0; i < 3; ++i) {
         WaitForSingleObject(mutex, INFINITE);
-        std::cout << "b" << std::flush;
+        cout << "b" << flush;
         computation();
         ReleaseMutex(mutex);
     };
@@ -107,7 +107,7 @@ DWORD WINAPI thread_b(LPVOID iNum)
     for (int i = 0; i < 3; ++i) {
         sem_wait(semB);
         WaitForSingleObject(mutex, INFINITE);
-        std::cout << "b" << std::flush;
+        cout << "b" << flush;
         computation();
         ReleaseMutex(mutex);
         sem_post(semK);
@@ -116,7 +116,7 @@ DWORD WINAPI thread_b(LPVOID iNum)
     sem_wait(semB);
     for (int i = 0; i < 3; ++i) {
         WaitForSingleObject(mutex, INFINITE);
-        std::cout << "b" << std::flush;
+        cout << "b" << flush;
         computation();
         ReleaseMutex(mutex);
     };
@@ -124,7 +124,7 @@ DWORD WINAPI thread_b(LPVOID iNum)
     sem_wait(semB);
     for (int i = 0; i < 3; ++i) {
         WaitForSingleObject(mutex, INFINITE);
-        std::cout << "b" << std::flush;
+        cout << "b" << flush;
         computation();
         ReleaseMutex(mutex);
     };
@@ -135,7 +135,7 @@ DWORD WINAPI thread_f(LPVOID iNum)
     sem_wait(semF);
     for (int i = 0; i < 3; ++i) {
         WaitForSingleObject(mutex, INFINITE);
-        std::cout << "f" << std::flush;
+        cout << "f" << flush;
         computation();
         ReleaseMutex(mutex);
     };
@@ -143,7 +143,7 @@ DWORD WINAPI thread_f(LPVOID iNum)
     sem_wait(semF);
     for (int i = 0; i < 3; ++i) {
         WaitForSingleObject(mutex, INFINITE);
-        std::cout << "f" << std::flush;
+        cout << "f" << flush;
         computation();
         ReleaseMutex(mutex);
     };
@@ -154,7 +154,7 @@ DWORD WINAPI thread_d(LPVOID iNum)
     sem_wait(semD);
     for (int i = 0; i < 3; ++i) {
         WaitForSingleObject(mutex, INFINITE);
-        std::cout << "d" << std::flush;
+        cout << "d" << flush;
         computation();
         ReleaseMutex(mutex);
     };
@@ -162,7 +162,7 @@ DWORD WINAPI thread_d(LPVOID iNum)
     sem_wait(semD);
     for (int i = 0; i < 3; ++i) {
         WaitForSingleObject(mutex, INFINITE);
-        std::cout << "d" << std::flush;
+        cout << "d" << flush;
         computation();
         ReleaseMutex(mutex);
     };
@@ -173,7 +173,7 @@ DWORD WINAPI thread_h(LPVOID iNum)
     sem_wait(semH);
     for (int i = 0; i < 3; ++i) {
         WaitForSingleObject(mutex, INFINITE);
-        std::cout << "h" << std::flush;
+        cout << "h" << flush;
         computation();
         ReleaseMutex(mutex);
     };
@@ -185,7 +185,7 @@ DWORD WINAPI thread_k(LPVOID iNum)
     for (int i = 0; i < 3; ++i) {
         sem_wait(semK);
         WaitForSingleObject(mutex, INFINITE);
-        std::cout << "k" << std::flush;
+        cout << "k" << flush;
         computation();
         ReleaseMutex(mutex);
         sem_post(semG);
@@ -194,7 +194,7 @@ DWORD WINAPI thread_k(LPVOID iNum)
     sem_wait(semK);
     for (int i = 0; i < 3; ++i) {
         WaitForSingleObject(mutex, INFINITE);
-        std::cout << "k" << std::flush;
+        cout << "k" << flush;
         computation();
         ReleaseMutex(mutex);
     };
@@ -206,7 +206,7 @@ DWORD WINAPI thread_m(LPVOID iNum)
     for (int i = 0; i < 3; ++i) {
         sem_wait(semM);
         WaitForSingleObject(mutex, INFINITE);
-        std::cout << "m" << std::flush;
+        cout << "m" << flush;
         computation();
         ReleaseMutex(mutex);
         if(i<2){
@@ -217,7 +217,7 @@ DWORD WINAPI thread_m(LPVOID iNum)
     sem_wait(semM);
     for (int i = 0; i < 3; ++i) {
         WaitForSingleObject(mutex, INFINITE);
-        std::cout << "m" << std::flush;
+        cout << "m" << flush;
         computation();
         ReleaseMutex(mutex);
     };
@@ -228,7 +228,7 @@ DWORD WINAPI thread_n(LPVOID iNum)
     sem_wait(semN);
     for (int i = 0; i < 3; ++i) {
         WaitForSingleObject(mutex, INFINITE);
-        std::cout << "n" << std::flush;
+        cout << "n" << flush;
         computation();
         ReleaseMutex(mutex);
     };
@@ -239,7 +239,7 @@ DWORD WINAPI thread_p(LPVOID iNum)
     sem_wait(semP);
     for (int i = 0; i < 3; ++i) {
         WaitForSingleObject(mutex, INFINITE);
-        std::cout << "p" << std::flush;
+        cout << "p" << flush;
         computation();
         ReleaseMutex(mutex);
     };
@@ -250,7 +250,7 @@ DWORD WINAPI thread_e(LPVOID iNum)
     sem_wait(semE);
     for (int i = 0; i < 3; ++i) {
         WaitForSingleObject(mutex, INFINITE);
-        std::cout << "e" << std::flush;
+        cout << "e" << flush;
         computation();
         ReleaseMutex(mutex);
     };
