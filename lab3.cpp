@@ -317,6 +317,7 @@ int lab3_init()
 
     //-------------------------
     wait_thread(Thread_list[0]);
+    sleep_ms(200);
     //-------------------------
     sem_post(semB);
     sem_post(semF);
@@ -327,6 +328,7 @@ int lab3_init()
     sem_wait(semF1);
     sem_wait(semD1);
     wait_thread(Thread_list[1]);
+    sleep_ms(200);
     //-------------------------
     sem_post(semB);
     sem_post(semF);
@@ -337,6 +339,7 @@ int lab3_init()
     wait_thread(Thread_list[11]);
     wait_thread(Thread_list[4]);
     wait_thread(Thread_list[5]);
+    sleep_ms(200);
     //-------------------------
     sem_post(semB);
     sem_post(semK);
@@ -348,6 +351,7 @@ int lab3_init()
     sem_wait(semK1);
     sem_wait(semM1);
     wait_thread(Thread_list[2]);
+    sleep_ms(200);
     //-------------------------
     sem_post(semB);
     sem_post(semK);
@@ -358,15 +362,18 @@ int lab3_init()
     wait_thread(Thread_list[7]);
     wait_thread(Thread_list[8]);
     wait_thread(Thread_list[6]);
+    sleep_ms(200);
     //-------------------------
     sem_post(semB);
     sem_post(semN);
 
     wait_thread(Thread_list[3]);
     wait_thread(Thread_list[9]);
+    sleep_ms(200);
     //-------------------------
     sem_post(semP);
     wait_thread(Thread_list[10]);
+    sleep_ms(200);
 
 
 //    Close sem
