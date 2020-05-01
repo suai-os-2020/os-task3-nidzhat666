@@ -39,12 +39,6 @@ void sem_wait (HANDLE sem){
 void sem_post (HANDLE sem){
     ReleaseSemaphore(sem, 1, NULL);
 }
-void mutex_lock(HANDLE mutx){
-    WaitForSingleObject(mutex, INFINITE);
-}
-void mutex_unlock(HANDLE mutx){
-    ReleaseMutex(mutx);
-}
 void wait_thread(HANDLE thr){
     WaitForSingleObject(thr, INFINITE);
 }
@@ -61,7 +55,6 @@ DWORD WINAPI thread_a(LPVOID iNum)
 }
 DWORD WINAPI thread_c(LPVOID iNum)
 {
-    sem_wait(semC);
     for (int i = 0; i < 3; ++i) {
         WaitForSingleObject(mutex, INFINITE);
         cout << "c" << flush;
@@ -73,7 +66,6 @@ DWORD WINAPI thread_c(LPVOID iNum)
 
 DWORD WINAPI thread_g(LPVOID iNum)
 {
-    sem_wait(semG);
     for (int i = 0; i < 3; ++i) {
         sem_wait(semG);
         WaitForSingleObject(mutex, INFINITE);
@@ -86,7 +78,6 @@ DWORD WINAPI thread_g(LPVOID iNum)
 }
 DWORD WINAPI thread_b(LPVOID iNum)
 {
-    sem_wait(semB);
     for (int i = 0; i < 3; ++i) {
         WaitForSingleObject(mutex, INFINITE);
         cout << "b" << flush;
@@ -132,7 +123,6 @@ DWORD WINAPI thread_b(LPVOID iNum)
 }
 DWORD WINAPI thread_f(LPVOID iNum)
 {
-    sem_wait(semF);
     for (int i = 0; i < 3; ++i) {
         WaitForSingleObject(mutex, INFINITE);
         cout << "f" << flush;
@@ -151,7 +141,6 @@ DWORD WINAPI thread_f(LPVOID iNum)
 }
 DWORD WINAPI thread_d(LPVOID iNum)
 {
-    sem_wait(semD);
     for (int i = 0; i < 3; ++i) {
         WaitForSingleObject(mutex, INFINITE);
         cout << "d" << flush;
@@ -170,7 +159,6 @@ DWORD WINAPI thread_d(LPVOID iNum)
 }
 DWORD WINAPI thread_h(LPVOID iNum)
 {
-    sem_wait(semH);
     for (int i = 0; i < 3; ++i) {
         WaitForSingleObject(mutex, INFINITE);
         cout << "h" << flush;
@@ -181,7 +169,6 @@ DWORD WINAPI thread_h(LPVOID iNum)
 }
 DWORD WINAPI thread_k(LPVOID iNum)
 {
-    sem_wait(semK);
     for (int i = 0; i < 3; ++i) {
         sem_wait(semK);
         WaitForSingleObject(mutex, INFINITE);
@@ -202,7 +189,6 @@ DWORD WINAPI thread_k(LPVOID iNum)
 }
 DWORD WINAPI thread_m(LPVOID iNum)
 {
-    sem_wait(semM);
     for (int i = 0; i < 3; ++i) {
         sem_wait(semM);
         WaitForSingleObject(mutex, INFINITE);
@@ -225,7 +211,6 @@ DWORD WINAPI thread_m(LPVOID iNum)
 }
 DWORD WINAPI thread_n(LPVOID iNum)
 {
-    sem_wait(semN);
     for (int i = 0; i < 3; ++i) {
         WaitForSingleObject(mutex, INFINITE);
         cout << "n" << flush;
@@ -236,7 +221,6 @@ DWORD WINAPI thread_n(LPVOID iNum)
 }
 DWORD WINAPI thread_p(LPVOID iNum)
 {
-    sem_wait(semP);
     for (int i = 0; i < 3; ++i) {
         WaitForSingleObject(mutex, INFINITE);
         cout << "p" << flush;
@@ -247,7 +231,6 @@ DWORD WINAPI thread_p(LPVOID iNum)
 }
 DWORD WINAPI thread_e(LPVOID iNum)
 {
-    sem_wait(semE);
     for (int i = 0; i < 3; ++i) {
         WaitForSingleObject(mutex, INFINITE);
         cout << "e" << flush;
@@ -278,39 +261,6 @@ int lab3_init()
     semP = CreateSemaphore(NULL,0, MAX_SEM_COUNT, NULL);
 
 
-    Thread_list[1] = CreateThread(NULL, 0,(thread_c), 0, 0, &IDThread);
-    if (Thread_list[1] == NULL)
-        return GetLastError();
-    Thread_list[2] = CreateThread(NULL, 0,(thread_g), 0, 0, &IDThread);
-    if (Thread_list[2] == NULL)
-        return GetLastError();
-    Thread_list[3] = CreateThread(NULL, 0,(thread_b), 0, 0, &IDThread);
-    if (Thread_list[3] == NULL)
-        return GetLastError();
-    Thread_list[4] = CreateThread(NULL, 0,(thread_f), 0, 0, &IDThread);
-    if (Thread_list[4] == NULL)
-        return GetLastError();
-    Thread_list[5] = CreateThread(NULL, 0,(thread_d), 0, 0, &IDThread);
-    if (Thread_list[5] == NULL)
-        return GetLastError();
-    Thread_list[6] = CreateThread(NULL, 0,(thread_h), 0, 0, &IDThread);
-    if (Thread_list[6] == NULL)
-        return GetLastError();
-    Thread_list[7] = CreateThread(NULL, 0,(thread_k), 0, 0, &IDThread);
-    if (Thread_list[7] == NULL)
-        return GetLastError();
-    Thread_list[8] = CreateThread(NULL, 0,(thread_m), 0, 0, &IDThread);
-    if (Thread_list[8] == NULL)
-        return GetLastError();
-    Thread_list[9] = CreateThread(NULL, 0,(thread_n), 0, 0, &IDThread);
-    if (Thread_list[9] == NULL)
-        return GetLastError();
-    Thread_list[10] = CreateThread(NULL, 0,(thread_p ), 0, 0, &IDThread);
-    if (Thread_list[10] == NULL)
-        return GetLastError();
-    Thread_list[11] = CreateThread(NULL, 0,( thread_e), 0, 0, &IDThread);
-    if (Thread_list[11] == NULL)
-        return GetLastError();
 
     //-------------------------
     Thread_list[0] = CreateThread(NULL, 0, (thread_a), 0, 0, &IDThread);
@@ -319,10 +269,18 @@ int lab3_init()
 
     wait_thread(Thread_list[0]);
     //-------------------------
-    sem_post(semB);
-    sem_post(semF);
-    sem_post(semC);
-    sem_post(semD);
+    Thread_list[3] = CreateThread(NULL, 0,(thread_b), 0, 0, &IDThread);
+    if (Thread_list[3] == NULL)
+        return GetLastError();
+    Thread_list[1] = CreateThread(NULL, 0,(thread_c), 0, 0, &IDThread);
+    if (Thread_list[1] == NULL)
+        return GetLastError();
+    Thread_list[4] = CreateThread(NULL, 0,(thread_f), 0, 0, &IDThread);
+    if (Thread_list[4] == NULL)
+        return GetLastError();
+    Thread_list[5] = CreateThread(NULL, 0,(thread_d), 0, 0, &IDThread);
+    if (Thread_list[5] == NULL)
+        return GetLastError();
 
     sem_wait(semB1);
     sem_wait(semF1);
@@ -332,7 +290,9 @@ int lab3_init()
     sem_post(semB);
     sem_post(semF);
     sem_post(semD);
-    sem_post(semE);
+    Thread_list[11] = CreateThread(NULL, 0,( thread_e), 0, 0, &IDThread);
+    if (Thread_list[11] == NULL)
+        return GetLastError();
 
     sem_wait(semB1);
     wait_thread(Thread_list[11]);
@@ -340,9 +300,16 @@ int lab3_init()
     wait_thread(Thread_list[5]);
     //-------------------------
     sem_post(semB);
-    sem_post(semK);
-    sem_post(semG);
-    sem_post(semM);
+    Thread_list[7] = CreateThread(NULL, 0,(thread_k), 0, 0, &IDThread);
+    if (Thread_list[7] == NULL)
+        return GetLastError();
+    Thread_list[8] = CreateThread(NULL, 0,(thread_m), 0, 0, &IDThread);
+    if (Thread_list[8] == NULL)
+        return GetLastError();
+    Thread_list[2] = CreateThread(NULL, 0,(thread_g), 0, 0, &IDThread);
+    if (Thread_list[2] == NULL)
+        return GetLastError();
+
 
 
     sem_wait(semB1);
@@ -353,7 +320,9 @@ int lab3_init()
     sem_post(semB);
     sem_post(semK);
     sem_post(semM);
-    sem_post(semH);
+    Thread_list[6] = CreateThread(NULL, 0,(thread_h), 0, 0, &IDThread);
+    if (Thread_list[6] == NULL)
+        return GetLastError();
 
     sem_wait(semB1);
     wait_thread(Thread_list[7]);
@@ -361,12 +330,16 @@ int lab3_init()
     wait_thread(Thread_list[6]);
     //-------------------------
     sem_post(semB);
-    sem_post(semN);
+    Thread_list[9] = CreateThread(NULL, 0,(thread_n), 0, 0, &IDThread);
+    if (Thread_list[9] == NULL)
+        return GetLastError();
 
     wait_thread(Thread_list[3]);
     wait_thread(Thread_list[9]);
     //-------------------------
-    sem_post(semP);
+    Thread_list[10] = CreateThread(NULL, 0,(thread_p ), 0, 0, &IDThread);
+    if (Thread_list[10] == NULL)
+        return GetLastError();
     wait_thread(Thread_list[10]);
 
     for (int i= 0; i <  MAX_THREAD_COUNT; i++){
