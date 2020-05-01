@@ -50,7 +50,7 @@ DWORD WINAPI thread_a(LPVOID iNum)
         cout << "a" << flush;
         computation();
         ReleaseMutex(mutex);
-        sleep_ms(200);
+         
     };
     return 0;
 }
@@ -61,7 +61,7 @@ DWORD WINAPI thread_c(LPVOID iNum)
         cout << "c" << flush;
         computation();
         ReleaseMutex(mutex);
-        sleep_ms(200);
+         
     };
     return 0;
 }
@@ -74,7 +74,7 @@ DWORD WINAPI thread_g(LPVOID iNum)
         cout << "g" << flush;
         computation();
         ReleaseMutex(mutex);
-        sleep_ms(200);
+         
         sem_post(semM);
     };
     return 0;
@@ -86,7 +86,7 @@ DWORD WINAPI thread_b(LPVOID iNum)
         cout << "b" << flush;
         computation();
         ReleaseMutex(mutex);
-        sleep_ms(200);
+         
     };
     sem_post(semB1);
     sem_wait(semB);
@@ -95,7 +95,7 @@ DWORD WINAPI thread_b(LPVOID iNum)
         cout << "b" << flush;
         computation();
         ReleaseMutex(mutex);
-        sleep_ms(200);
+         
     };
     sem_post(semB1);
     sem_wait(semB);
@@ -106,7 +106,7 @@ DWORD WINAPI thread_b(LPVOID iNum)
         cout << "b" << flush;
         computation();
         ReleaseMutex(mutex);
-        sleep_ms(200);
+         
         sem_post(semK);
     };
     sem_post(semB1);
@@ -116,7 +116,7 @@ DWORD WINAPI thread_b(LPVOID iNum)
         cout << "b" << flush;
         computation();
         ReleaseMutex(mutex);
-        sleep_ms(200);
+         
     };
     sem_post(semB1);
     sem_wait(semB);
@@ -125,7 +125,7 @@ DWORD WINAPI thread_b(LPVOID iNum)
         cout << "b" << flush;
         computation();
         ReleaseMutex(mutex);
-        sleep_ms(200);
+         
     };
     return 0;
 }
@@ -136,7 +136,7 @@ DWORD WINAPI thread_f(LPVOID iNum)
         cout << "f" << flush;
         computation();
         ReleaseMutex(mutex);
-        sleep_ms(200);
+         
     };
     sem_post(semF1);
     sem_wait(semF);
@@ -145,7 +145,7 @@ DWORD WINAPI thread_f(LPVOID iNum)
         cout << "f" << flush;
         computation();
         ReleaseMutex(mutex);
-        sleep_ms(200);
+         
     };
     return 0;
 }
@@ -156,7 +156,7 @@ DWORD WINAPI thread_d(LPVOID iNum)
         cout << "d" << flush;
         computation();
         ReleaseMutex(mutex);
-        sleep_ms(200);
+         
     };
     sem_post(semD1);
     sem_wait(semD);
@@ -165,7 +165,7 @@ DWORD WINAPI thread_d(LPVOID iNum)
         cout << "d" << flush;
         computation();
         ReleaseMutex(mutex);
-        sleep_ms(200);
+         
     };
     return 0;
 }
@@ -176,7 +176,7 @@ DWORD WINAPI thread_h(LPVOID iNum)
         cout << "h" << flush;
         computation();
         ReleaseMutex(mutex);
-        sleep_ms(200);
+         
     };
     return 0;
 }
@@ -188,7 +188,7 @@ DWORD WINAPI thread_k(LPVOID iNum)
         cout << "k" << flush;
         computation();
         ReleaseMutex(mutex);
-        sleep_ms(200);
+         
         sem_post(semG);
     };
     sem_post(semK1);
@@ -198,7 +198,7 @@ DWORD WINAPI thread_k(LPVOID iNum)
         cout << "k" << flush;
         computation();
         ReleaseMutex(mutex);
-        sleep_ms(200);
+         
     };
     return 0;
 }
@@ -210,7 +210,7 @@ DWORD WINAPI thread_m(LPVOID iNum)
         cout << "m" << flush;
         computation();
         ReleaseMutex(mutex);
-        sleep_ms(200);
+         
         if(i<2){
             sem_post(semB);
         }
@@ -222,7 +222,7 @@ DWORD WINAPI thread_m(LPVOID iNum)
         cout << "m" << flush;
         computation();
         ReleaseMutex(mutex);
-        sleep_ms(200);
+         
     };
     return 0;
 }
@@ -233,7 +233,7 @@ DWORD WINAPI thread_n(LPVOID iNum)
         cout << "n" << flush;
         computation();
         ReleaseMutex(mutex);
-        sleep_ms(200);
+         
     };
     return 0;
 }
@@ -244,7 +244,7 @@ DWORD WINAPI thread_p(LPVOID iNum)
         cout << "p" << flush;
         computation();
         ReleaseMutex(mutex);
-        sleep_ms(200);
+         
     };
     return 0;
 }
@@ -255,13 +255,17 @@ DWORD WINAPI thread_e(LPVOID iNum)
         cout << "e" << flush;
         computation();
         ReleaseMutex(mutex);
-        sleep_ms(200);
+         
     };
     return 0;
 }
 int lab3_init()
 {
     DWORD IDThread;
+
+    mutex = CreateMutex(NULL, false, NULL);
+    if (mutex == NULL)
+        return GetLastError();
 
     semC = CreateSemaphore(NULL,0, MAX_SEM_COUNT, NULL);
     semB = CreateSemaphore(NULL,0, MAX_SEM_COUNT, NULL);
@@ -288,6 +292,7 @@ int lab3_init()
         return GetLastError();
 
     wait_thread(Thread_list[0]);
+     
     //-------------------------
     Thread_list[3] = CreateThread(NULL, 0,(thread_b), 0, 0, &IDThread);
     if (Thread_list[3] == NULL)
@@ -306,6 +311,7 @@ int lab3_init()
     sem_wait(semF1);
     sem_wait(semD1);
     wait_thread(Thread_list[1]);
+     
     //-------------------------
     sem_post(semB);
     sem_post(semF);
@@ -318,6 +324,7 @@ int lab3_init()
     wait_thread(Thread_list[11]);
     wait_thread(Thread_list[4]);
     wait_thread(Thread_list[5]);
+     
     //-------------------------
     sem_post(semB);
     Thread_list[7] = CreateThread(NULL, 0,(thread_k), 0, 0, &IDThread);
@@ -336,6 +343,7 @@ int lab3_init()
     sem_wait(semK1);
     sem_wait(semM1);
     wait_thread(Thread_list[2]);
+     
     //-------------------------
     sem_post(semB);
     sem_post(semK);
@@ -348,6 +356,7 @@ int lab3_init()
     wait_thread(Thread_list[7]);
     wait_thread(Thread_list[8]);
     wait_thread(Thread_list[6]);
+     
     //-------------------------
     sem_post(semB);
     Thread_list[9] = CreateThread(NULL, 0,(thread_n), 0, 0, &IDThread);
@@ -356,6 +365,7 @@ int lab3_init()
 
     wait_thread(Thread_list[3]);
     wait_thread(Thread_list[9]);
+     
     //-------------------------
     Thread_list[10] = CreateThread(NULL, 0,(thread_p ), 0, 0, &IDThread);
     if (Thread_list[10] == NULL)
