@@ -278,42 +278,42 @@ int lab3_init()
     semP = CreateSemaphore(NULL,0, MAX_SEM_COUNT, NULL);
 
 
-    Thread_list[1] = CreateThread(NULL, 0, thread_c, 0, 0, &IDThread);
+    Thread_list[1] = CreateThread(NULL, 0,(thread_c), 0, 0, &IDThread);
     if (Thread_list[1] == NULL)
         return GetLastError();
-    Thread_list[2] = CreateThread(NULL, 0, thread_g, 0, 0, &IDThread);
+    Thread_list[2] = CreateThread(NULL, 0,(thread_g), 0, 0, &IDThread);
     if (Thread_list[2] == NULL)
         return GetLastError();
-    Thread_list[3] = CreateThread(NULL, 0, thread_b, 0, 0, &IDThread);
+    Thread_list[3] = CreateThread(NULL, 0,(thread_b), 0, 0, &IDThread);
     if (Thread_list[3] == NULL)
         return GetLastError();
-    Thread_list[4] = CreateThread(NULL, 0, thread_f, 0, 0, &IDThread);
+    Thread_list[4] = CreateThread(NULL, 0,(thread_f), 0, 0, &IDThread);
     if (Thread_list[4] == NULL)
         return GetLastError();
-    Thread_list[5] = CreateThread(NULL, 0, thread_d, 0, 0, &IDThread);
+    Thread_list[5] = CreateThread(NULL, 0,(thread_d), 0, 0, &IDThread);
     if (Thread_list[5] == NULL)
         return GetLastError();
-    Thread_list[6] = CreateThread(NULL, 0, thread_h, 0, 0, &IDThread);
+    Thread_list[6] = CreateThread(NULL, 0,(thread_h), 0, 0, &IDThread);
     if (Thread_list[6] == NULL)
         return GetLastError();
-    Thread_list[7] = CreateThread(NULL, 0, thread_k, 0, 0, &IDThread);
+    Thread_list[7] = CreateThread(NULL, 0,(thread_k), 0, 0, &IDThread);
     if (Thread_list[7] == NULL)
         return GetLastError();
-    Thread_list[8] = CreateThread(NULL, 0, thread_m, 0, 0, &IDThread);
+    Thread_list[8] = CreateThread(NULL, 0,(thread_m), 0, 0, &IDThread);
     if (Thread_list[8] == NULL)
         return GetLastError();
-    Thread_list[9] = CreateThread(NULL, 0, thread_n, 0, 0, &IDThread);
+    Thread_list[9] = CreateThread(NULL, 0,(thread_n), 0, 0, &IDThread);
     if (Thread_list[9] == NULL)
         return GetLastError();
-    Thread_list[10] = CreateThread(NULL, 0, thread_p, 0, 0, &IDThread);
+    Thread_list[10] = CreateThread(NULL, 0,(thread_p ), 0, 0, &IDThread);
     if (Thread_list[10] == NULL)
         return GetLastError();
-    Thread_list[11] = CreateThread(NULL, 0, thread_e, 0, 0, &IDThread);
+    Thread_list[11] = CreateThread(NULL, 0,( thread_e), 0, 0, &IDThread);
     if (Thread_list[11] == NULL)
         return GetLastError();
 
     //-------------------------
-    Thread_list[0] = CreateThread(NULL, 0, thread_a, 0, 0, &IDThread);
+    Thread_list[0] = CreateThread(NULL, 0, (thread_a), 0, 0, &IDThread);
     if (Thread_list[0] == NULL)
         return GetLastError();
 
