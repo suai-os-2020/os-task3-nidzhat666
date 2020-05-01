@@ -50,6 +50,7 @@ DWORD WINAPI thread_a(LPVOID iNum)
         cout << "a" << flush;
         computation();
         ReleaseMutex(mutex);
+        sleep_ms(200);
     };
     return 0;
 }
@@ -60,6 +61,7 @@ DWORD WINAPI thread_c(LPVOID iNum)
         cout << "c" << flush;
         computation();
         ReleaseMutex(mutex);
+        sleep_ms(200);
     };
     return 0;
 }
@@ -72,6 +74,7 @@ DWORD WINAPI thread_g(LPVOID iNum)
         cout << "g" << flush;
         computation();
         ReleaseMutex(mutex);
+        sleep_ms(200);
         sem_post(semM);
     };
     return 0;
@@ -83,6 +86,7 @@ DWORD WINAPI thread_b(LPVOID iNum)
         cout << "b" << flush;
         computation();
         ReleaseMutex(mutex);
+        sleep_ms(200);
     };
     sem_post(semB1);
     sem_wait(semB);
@@ -91,6 +95,7 @@ DWORD WINAPI thread_b(LPVOID iNum)
         cout << "b" << flush;
         computation();
         ReleaseMutex(mutex);
+        sleep_ms(200);
     };
     sem_post(semB1);
     sem_wait(semB);
@@ -101,6 +106,7 @@ DWORD WINAPI thread_b(LPVOID iNum)
         cout << "b" << flush;
         computation();
         ReleaseMutex(mutex);
+        sleep_ms(200);
         sem_post(semK);
     };
     sem_post(semB1);
@@ -110,6 +116,7 @@ DWORD WINAPI thread_b(LPVOID iNum)
         cout << "b" << flush;
         computation();
         ReleaseMutex(mutex);
+        sleep_ms(200);
     };
     sem_post(semB1);
     sem_wait(semB);
@@ -118,6 +125,7 @@ DWORD WINAPI thread_b(LPVOID iNum)
         cout << "b" << flush;
         computation();
         ReleaseMutex(mutex);
+        sleep_ms(200);
     };
     return 0;
 }
@@ -128,6 +136,7 @@ DWORD WINAPI thread_f(LPVOID iNum)
         cout << "f" << flush;
         computation();
         ReleaseMutex(mutex);
+        sleep_ms(200);
     };
     sem_post(semF1);
     sem_wait(semF);
@@ -136,6 +145,7 @@ DWORD WINAPI thread_f(LPVOID iNum)
         cout << "f" << flush;
         computation();
         ReleaseMutex(mutex);
+        sleep_ms(200);
     };
     return 0;
 }
@@ -146,6 +156,7 @@ DWORD WINAPI thread_d(LPVOID iNum)
         cout << "d" << flush;
         computation();
         ReleaseMutex(mutex);
+        sleep_ms(200);
     };
     sem_post(semD1);
     sem_wait(semD);
@@ -154,6 +165,7 @@ DWORD WINAPI thread_d(LPVOID iNum)
         cout << "d" << flush;
         computation();
         ReleaseMutex(mutex);
+        sleep_ms(200);
     };
     return 0;
 }
@@ -164,6 +176,7 @@ DWORD WINAPI thread_h(LPVOID iNum)
         cout << "h" << flush;
         computation();
         ReleaseMutex(mutex);
+        sleep_ms(200);
     };
     return 0;
 }
@@ -175,6 +188,7 @@ DWORD WINAPI thread_k(LPVOID iNum)
         cout << "k" << flush;
         computation();
         ReleaseMutex(mutex);
+        sleep_ms(200);
         sem_post(semG);
     };
     sem_post(semK1);
@@ -184,6 +198,7 @@ DWORD WINAPI thread_k(LPVOID iNum)
         cout << "k" << flush;
         computation();
         ReleaseMutex(mutex);
+        sleep_ms(200);
     };
     return 0;
 }
@@ -195,6 +210,7 @@ DWORD WINAPI thread_m(LPVOID iNum)
         cout << "m" << flush;
         computation();
         ReleaseMutex(mutex);
+        sleep_ms(200);
         if(i<2){
             sem_post(semB);
         }
@@ -206,6 +222,7 @@ DWORD WINAPI thread_m(LPVOID iNum)
         cout << "m" << flush;
         computation();
         ReleaseMutex(mutex);
+        sleep_ms(200);
     };
     return 0;
 }
@@ -216,6 +233,7 @@ DWORD WINAPI thread_n(LPVOID iNum)
         cout << "n" << flush;
         computation();
         ReleaseMutex(mutex);
+        sleep_ms(200);
     };
     return 0;
 }
@@ -226,6 +244,7 @@ DWORD WINAPI thread_p(LPVOID iNum)
         cout << "p" << flush;
         computation();
         ReleaseMutex(mutex);
+        sleep_ms(200);
     };
     return 0;
 }
@@ -236,6 +255,7 @@ DWORD WINAPI thread_e(LPVOID iNum)
         cout << "e" << flush;
         computation();
         ReleaseMutex(mutex);
+        sleep_ms(200);
     };
     return 0;
 }
@@ -366,7 +386,6 @@ int lab3_init()
     CloseHandle(semP);
 
     //close thread
-
     //close mutex
     CloseHandle(mutex);
 //	system("pause");
